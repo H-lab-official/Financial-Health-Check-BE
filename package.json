@@ -1,0 +1,19 @@
+{
+  "name": "financial-health-check-be",
+  "module": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "bun --watch index.js"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.15.0",
+    "express": "^4.19.2",
+    "prisma": "^5.15.0"
+  }
+}

@@ -1,0 +1,96 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model EducationPlan {
+  id               String @id @default(uuid())
+  user_id          String
+  user             User   @relation(fields: [user_id], references: [id])
+  levelOfeducation Int
+  typeOfeducation  Int
+  yearsOfeducation Int
+  inflationRate    Int
+  deposit          Int
+  insuranceFund    Int
+  otherAssets      Int
+}
+
+model ProtectionPlan {
+  id                           String @id @default(uuid())
+  user_id                      String
+  user                         User   @relation(fields: [user_id], references: [id])
+  initialMonthlyExpense        Int
+  numberOfYebigintars          Int
+  adjustedYearlbigintyExpenses Int
+  inflationRate                Int
+  homePayments                 Int
+  carPayments                  Int
+  otherDebts                   Int
+  bankDeposit                  Int
+  lifeInsuranceFund            Int
+}
+
+model importance {
+  id                  String @id @default(uuid())
+  user_id             String
+  user                User   @relation(fields: [user_id], references: [id])
+  protectionPlanOrder Int
+  healthPlanOrder     Int
+  retirementPlanOrder Int
+  educationPlanOrder  Int
+}
+
+model User {
+  id             String           @id @default(uuid())
+  user_params    String
+  name           String
+  age            Int
+  HealthPlan     HealthPlan[]
+  ProtectionPlan ProtectionPlan[]
+  importance     importance[]
+  EducationPlan  EducationPlan[]
+  RetirementPlan RetirementPlan[]
+}
+
+model HealthPlan {
+  id                                String @id @default(uuid())
+  user_id                           String
+  user                              User   @relation(fields: [user_id], references: [id])
+  hospitals                         Int
+  dailyCompensationFromWelfare      Int
+  treatingSeriousIllness            Int
+  emergencyCosts                    Int
+  annualTreatment                   Int
+  roomFeeFromCompany                Int
+  dailyCompensationFromCompany      Int
+  treatingSeriousIllnessFromCompany Int
+  emergencyCostsFromCompany         Int
+  annualTreatmentFromCompany        Int
+}
+
+model RetirementPlan {
+  id            String @id @default(uuid())
+  user_id       String
+  user          User   @relation(fields: [user_id], references: [id])
+  livingCosts   Int
+  houseCosts    Int
+  internetCosts Int
+  clothingCosts Int
+  medicalCosts  Int
+  otherCosts    Int
+  age           Int
+  retireAge     Int
+  lifExpectancy Int
+  inflationRate Int
+  deposit       Int
+  insuranceFund Int
+  otherAssets   Int
+}
