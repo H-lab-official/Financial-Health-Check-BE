@@ -7,7 +7,7 @@ export const getAllRetirementPlans = async (req, res) => {
         const plans = await prisma.retirementPlan.findMany({
             include: { user: true },
         })
-        res.status(200).json("retirementPlan")
+        res.status(200).json(plans)
     } catch (error) {
         res.status(500).json({ msg: error.message })
     }
@@ -19,36 +19,44 @@ export const getRetirementPlanById = async (req, res) => {
             where: { id },
             include: { user: true },
         })
+        if (!plan) {
+            return res.status(404).json({ msg: 'Retirement Plan not found' });
+        }
         res.status(200).json(plan)
     } catch (error) {
         res.status(404).json({ msg: error.message })
     }
 }
 export const createRetirementPlan = async (req, res) => {
-    const { user_params, livingCosts ,
+    const { data, nameData } = req.body;
+    const {  livingCosts ,
         houseCosts ,
         internetCosts,
         clothingCosts ,
         medicalCosts,
-        otherCosts ,
-        age     ,
+        otherCosts ,       
         retireAge ,
         lifExpectancy ,
         inflationRate,
         deposit    ,
         insuranceFund ,
-        otherAssets  } = req.body
+        otherAssets  } = data
+        const { nickname, age, user_params } = nameData;
     try {
-        const user = await prisma.user.create({
-            data: {
-                user_params,
-                name: '',
-                age: 0
-            }
-        })
+        let user = await prisma.user.findUnique({ where: { user_params } });
+        if (!user) {
+            user = await prisma.user.create({
+                data: {
+                    user_params
+
+                }
+            })
+        }
         const plan = await prisma.retirementPlan.create({
             data: {
-                user: { connect: { id: user.id } },
+                user: { connect: { user_params } },
+                nickname,
+                age,
                 livingCosts ,
                 houseCosts ,
                 internetCosts,
@@ -72,46 +80,43 @@ export const createRetirementPlan = async (req, res) => {
 }
 export const updateRetirementPlan = async (req, res) => {
     const { id } = req.params
+    const { data, nameData } = req.body;
+    const { nickname, age } = nameData;
     const {  livingCosts ,
         houseCosts ,
         internetCosts,
         clothingCosts ,
         medicalCosts,
-        otherCosts ,
-        age     ,
+        otherCosts ,       
         retireAge ,
         lifExpectancy ,
         inflationRate,
         deposit    ,
         insuranceFund ,
-        otherAssets } = req.body
+        otherAssets } = data
 
     try {
         // Find the existing protection plan
         const existingPlan = await prisma.retirementPlan.findUnique({
-            where: { id },
-            include: { user: true },
+            where: { id }
+          
         })
         if (!existingPlan) {
-            return res.status(404).json({ error: 'Protection plan not found' })
+            return res.status(404).json({ error: 'Retirement plan not found' })
         }
         // Update the user data if user_params is provided
-        if (user_params) {
-            await prisma.user.update({
-                where: { id: existingPlan.user.id },
-                data: { user_params },
-            })
-        }
+        
         const updatedPlan = await prisma.retirementPlan.update({
             where: { id },
             data: {
+                nickname,
+                age,
                 livingCosts ,
                 houseCosts ,
                 internetCosts,
                 clothingCosts ,
                 medicalCosts,
-                otherCosts ,
-                age     ,
+                otherCosts ,               
                 retireAge ,
                 lifExpectancy ,
                 inflationRate,

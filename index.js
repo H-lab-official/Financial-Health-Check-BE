@@ -1,5 +1,7 @@
 import express from 'express'
+import cors from 'cors'
 const app = express()
+
 const port = 3000
 import protection from './routes/ProtectionPlanRoutes.js'
 import userRoutes from "./routes/UserRoutes.js"
@@ -7,6 +9,7 @@ import HealthPlan from './routes/HealthPlanRoutes.js'
 import Education from './routes/EducationPlanRoutes.js'
 import Retirement from './routes/RetirementPlanRoutes.js'
 import Importance from './routes/ImportanceRoutes.js'
+app.use(cors())
 app.use(express.json())
 
 app.get('/', (req, res) => {

@@ -11,86 +11,107 @@ datasource db {
 }
 
 model EducationPlan {
-  id               String @id @default(uuid())
-  user_id          String
-  user             User   @relation(fields: [user_id], references: [id])
-  levelOfeducation Int
-  typeOfeducation  Int
-  yearsOfeducation Int
-  inflationRate    Int
-  deposit          Int
-  insuranceFund    Int
-  otherAssets      Int
+  id               String   @id @unique @default(uuid())
+  user_params      String
+  user             User     @relation(fields: [user_params], references: [user_params])
+  nickname         String
+  age              String
+  levelOfeducation String
+  typeOfeducation  String
+  yearsOfeducation String
+  inflationRate    String
+  deposit          String
+  insuranceFund    String
+  otherAssets      String
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
 }
 
 model ProtectionPlan {
-  id                           String @id @default(uuid())
-  user_id                      String
-  user                         User   @relation(fields: [user_id], references: [id])
-  initialMonthlyExpense        Int
-  numberOfYebigintars          Int
-  adjustedYearlbigintyExpenses Int
-  inflationRate                Int
-  homePayments                 Int
-  carPayments                  Int
-  otherDebts                   Int
-  bankDeposit                  Int
-  lifeInsuranceFund            Int
+  id                     String   @id @unique @default(uuid())
+  user_params            String
+  user                   User     @relation(fields: [user_params], references: [user_params])
+  nickname               String
+  age                    String
+  initialMonthlyExpense  String
+  numberOfYears          String
+  adjustedYearlyExpenses String
+  inflationRate          String
+  homePayments           String
+  carPayments            String
+  otherDebts             String
+  bankDeposit            String
+  lifeInsuranceFund      String
+  otherAssets            String
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
 }
 
 model importance {
-  id                  String @id @default(uuid())
-  user_id             String
-  user                User   @relation(fields: [user_id], references: [id])
-  protectionPlanOrder Int
-  healthPlanOrder     Int
-  retirementPlanOrder Int
-  educationPlanOrder  Int
+  id                  String   @id @unique @default(uuid())
+  user_params         String
+  user                User     @relation(fields: [user_params], references: [user_params])
+  nickname            String
+  age                 String
+  protectionPlanOrder String
+  healthPlanOrder     String
+  retirementPlanOrder String
+  educationPlanOrder  String
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
 }
 
 model User {
-  id             String           @id @default(uuid())
-  user_params    String
-  name           String
-  age            Int
-  HealthPlan     HealthPlan[]
+  id             String           @id @unique @default(uuid())
+  user_params    String           @unique
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  EducationPlan  EducationPlan[]
   ProtectionPlan ProtectionPlan[]
   importance     importance[]
-  EducationPlan  EducationPlan[]
+  HealthPlan     HealthPlan[]
   RetirementPlan RetirementPlan[]
 }
 
 model HealthPlan {
-  id                                String @id @default(uuid())
-  user_id                           String
-  user                              User   @relation(fields: [user_id], references: [id])
-  hospitals                         Int
-  dailyCompensationFromWelfare      Int
-  treatingSeriousIllness            Int
-  emergencyCosts                    Int
-  annualTreatment                   Int
-  roomFeeFromCompany                Int
-  dailyCompensationFromCompany      Int
-  treatingSeriousIllnessFromCompany Int
-  emergencyCostsFromCompany         Int
-  annualTreatmentFromCompany        Int
+  id                                String   @id @unique @default(uuid())
+  user_params                       String
+  user                              User     @relation(fields: [user_params], references: [user_params])
+  nickname                          String
+  age                               String
+  hospitals                         String
+  dailyCompensationFromWelfare      String
+  treatingSeriousIllness            String
+  emergencyCosts                    String
+  annualTreatment                   String
+  roomFeeFromCompany                String
+  dailyCompensationFromCompany      String
+  treatingSeriousIllnessFromCompany String
+  emergencyCostsFromCompany         String
+  annualTreatmentFromCompany        String
+  createdAt                         DateTime @default(now())
+  updatedAt                         DateTime @updatedAt
 }
 
 model RetirementPlan {
-  id            String @id @default(uuid())
-  user_id       String
-  user          User   @relation(fields: [user_id], references: [id])
-  livingCosts   Int
-  houseCosts    Int
-  internetCosts Int
-  clothingCosts Int
-  medicalCosts  Int
-  otherCosts    Int
-  age           Int
-  retireAge     Int
-  lifExpectancy Int
-  inflationRate Int
-  deposit       Int
-  insuranceFund Int
-  otherAssets   Int
+  id            String @id @unique @default(uuid())
+  user_params   String
+  user          User   @relation(fields: [user_params], references: [user_params])
+  nickname      String
+  age           String
+  livingCosts   String
+  houseCosts    String
+  internetCosts String
+  clothingCosts String
+  medicalCosts  String
+  otherCosts    String
+
+  retireAge     String
+  lifExpectancy String
+  inflationRate String
+  deposit       String
+  insuranceFund String
+  otherAssets   String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 }
