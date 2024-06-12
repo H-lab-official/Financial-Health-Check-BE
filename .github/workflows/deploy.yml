@@ -39,7 +39,7 @@ jobs:
             export PATH=/root/.nvm/versions/node/v20.12.2/bin:$PATH #'which pm2' command on terminal will give the right path
             cd $TARGET_DIR
             git pull origin ${GITHUB_REF#refs/heads/}
-            echo "DATABASE_URL=${DATABASE_URL}" > .env
+            echo "DATABASE_URL=\"${DATABASE_URL}\"" > .env
             npm install
             npm run build
             mv ecosystem.config.js ecosystem.config.cjs           
