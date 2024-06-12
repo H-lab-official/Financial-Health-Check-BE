@@ -1,5 +1,5 @@
 import express from 'express'
-import { getAllProtectionPlans, getProtectionPlanById, createProtectionPlan, updateProtectionPlan, deleteProtectionPlan, } from '../controller/ProtectionPlanController'
+import { getAllProtectionPlans, getProtectionPlanById, createProtectionPlan, updateProtectionPlan, deleteProtectionPlan, } from '../controller/ProtectionPlanController.js'
 const router = express.Router()
 router.get('/protection', getAllProtectionPlans)
 router.get('/protection/:id', getProtectionPlanById)
