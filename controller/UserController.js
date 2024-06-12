@@ -13,10 +13,10 @@ export const getAllUsers = async (req, res) => {
 
 
 export const getUserByUserParams = async (req, res) => {
-  const { user_params } = req.query;
+  const { user_params } = req.params;
   try {
     const user = await prisma.user.findUnique({
-      where: { user_params },
+      where: { user_params :user_params},
       include: {
         HealthPlan: true,
         ProtectionPlan: true,

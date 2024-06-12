@@ -5,7 +5,7 @@ router.get('/users', getAllUsers)
 router.get('/users/:id', getUserById)
 router.post('/users', createUser)
 router.put('/users/:id', updateUser)
-router.get('/users', getUserByUserParams)
+router.get('/users/params/:user_params', getUserByUserParams)
 router.delete('/users/:id', deleteUser)
 
 export default router
