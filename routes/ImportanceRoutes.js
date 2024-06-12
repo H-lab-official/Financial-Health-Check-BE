@@ -1,5 +1,5 @@
 import express from 'express'
-import {getAllImportance,getImportanceById,createImportance,updateImportance,deleteImportance} from '../controller/ImportanceController'
+import {getAllImportance,getImportanceById,createImportance,updateImportance,deleteImportance} from '../controller/ImportanceController.js'
 const router = express.Router()
 router.get('/importance', getAllImportance)
 router.get('/importance/:id', getImportanceById)

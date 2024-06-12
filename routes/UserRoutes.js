@@ -1,5 +1,5 @@
 import express from 'express'
-import {getAllUsers,getUserById,createUser,updateUser,getUserByUserParams,deleteUser,} from "../controller/UserController"
+import {getAllUsers,getUserById,createUser,updateUser,getUserByUserParams,deleteUser,} from "../controller/UserController.js"
 const router =express.Router()
 router.get('/users', getAllUsers)
 router.get('/users/:id', getUserById)

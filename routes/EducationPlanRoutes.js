@@ -1,5 +1,5 @@
 import express from 'express'
-import {getAllEducationPlans,getEducationPlanById,createEducationPlan,updateEducationPlan,deleteEducationPlan} from '../controller/EducationPlanController'
+import {getAllEducationPlans,getEducationPlanById,createEducationPlan,updateEducationPlan,deleteEducationPlan} from '../controller/EducationPlanController.js'
 const router = express.Router()
 router.get('/educationplan', getAllEducationPlans)
 router.get('/educationplan/:id', getEducationPlanById)

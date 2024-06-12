@@ -1,5 +1,5 @@
 import express from 'express'
-import {getAllRetirementPlans,getRetirementPlanById,createRetirementPlan,updateRetirementPlan,deleteRetirementPlan} from '../controller/RetirementPlanController'
+import {getAllRetirementPlans,getRetirementPlanById,createRetirementPlan,updateRetirementPlan,deleteRetirementPlan} from '../controller/RetirementPlanController.js'
 const router = express.Router()
 router.get('/retirementplan', getAllRetirementPlans)
 router.get('/retirementplan/:id', getRetirementPlanById)
