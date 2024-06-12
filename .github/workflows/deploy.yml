@@ -1,4 +1,4 @@
-name: Deploy Next.js App
+name: Deploy Financial-Health-Check-BE App
 
 on:
   push:
@@ -36,19 +36,21 @@ jobs:
 
         run: |
           ssh -o StrictHostKeyChecking=no $USERNAME@$HOST << EOF
-            export PATH=/root/.nvm/versions/node/v20.12.2/bin:$PATH #'which pm2' command on terminal will give the right path
+            export PATH=/root/.nvm/versions/node/v20.12.2/bin:$PATH
             cd $TARGET_DIR
             git pull origin ${GITHUB_REF#refs/heads/}
             echo "DATABASE_URL=\"${DATABASE_URL}\"" > .env
             npm install
             npm run build
-            mv ecosystem.config.js ecosystem.config.cjs           
+            mv ecosystem.config.js ecosystem.config.cjs
+            npx prisma generate
+            npx prisma migrate deploy --preview-feature
             if pm2 list | grep -q $APP_NAME; then
               echo "Restarting application: $APP_NAME"
               pm2 restart $APP_NAME
             else
               echo "Starting application: $APP_NAME"
               pm2 start ecosystem.config.cjs
-            fi            
+            fi
             pm2 save
           EOF
