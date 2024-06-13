@@ -9,6 +9,11 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+generator markdown {
+  provider = "prisma-markdown"
+  output   = "./ERD.md"
+  title    = "financial-health-check"
+}
 
 model EducationPlan {
   id               String   @id @unique @default(uuid())

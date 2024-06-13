@@ -33,13 +33,16 @@ jobs:
           TARGET_DIR: /var/www/Financial-Health-Check-BE
           APP_NAME: Financial-Health-Check-BE
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
-
+          SWAGGER_PASSWORD: ${{secrets.SWAGGER_PASSWORD}}
+          SWAGGER_UUID: ${{secrets.SWAGGER_UUID}}
         run: |
           ssh -o StrictHostKeyChecking=no $USERNAME@$HOST << EOF
             export PATH=/root/.nvm/versions/node/v20.12.2/bin:$PATH
             cd $TARGET_DIR
             git pull origin ${GITHUB_REF#refs/heads/}
             echo "DATABASE_URL=\"${DATABASE_URL}\"" > .env
+            echo "SWAGGER_PASSWORD=${SWAGGER_PASSWORD}" >> .env
+            echo "SWAGGER_UUID=${SWAGGER_UUID}" >> .env
             npm install
             npm run build
             mv ecosystem.config.js ecosystem.config.cjs
