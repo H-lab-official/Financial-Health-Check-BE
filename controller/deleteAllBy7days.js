@@ -44,6 +44,13 @@ export const deleteAllBy7days = async () => {
                 }
             }
         })
+        await prisma.user.deleteMany({
+            where: {
+                createdAt: {
+                    lt: sevenDaysAgo,
+                }
+            }
+        })
 
         console.log("ลบข้อมูลที่เกิน 7 วันเรียบร้อยแล้ว");
     } catch (error) {
