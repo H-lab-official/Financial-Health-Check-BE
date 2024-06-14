@@ -161,8 +161,8 @@ app.use(Education)
 app.use(Retirement)
 app.use(Importance)
 
-cron.schedule('0 0 * * *', deleteAllBy7days)
-
+// cron.schedule('0 0 * * *', deleteAllBy7days)
+cron.schedule('* * * * *', deleteAllBy7days);
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })

@@ -1,12 +1,14 @@
 import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
-export const deleteAllBy7days = async (req, res) => {
+export const deleteAllBy7days = async () => {
     try {
+        const sevenDaysAgo = new Date(Date.now() - 7* 24 * 60 * 60 * 1000); // 7 days ago
+
         await prisma.educationPlan.deleteMany({
             where: {
                 createdAt: {
-                    lt: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),
+                    lt: sevenDaysAgo,
                 }
             }
         })
@@ -14,7 +16,7 @@ export const deleteAllBy7days = async (req, res) => {
         await prisma.healthPlan.deleteMany({
             where: {
                 createdAt: {
-                    lt: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),
+                    lt: sevenDaysAgo,
                 }
             }
         })
@@ -22,7 +24,7 @@ export const deleteAllBy7days = async (req, res) => {
         await prisma.importance.deleteMany({
             where: {
                 createdAt: {
-                    lt: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),
+                    lt: sevenDaysAgo,
                 }
             }
         })
@@ -30,7 +32,7 @@ export const deleteAllBy7days = async (req, res) => {
         await prisma.protectionPlan.deleteMany({
             where: {
                 createdAt: {
-                    lt: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),
+                    lt: sevenDaysAgo,
                 }
             }
         })
@@ -38,14 +40,13 @@ export const deleteAllBy7days = async (req, res) => {
         await prisma.retirementPlan.deleteMany({
             where: {
                 createdAt: {
-                    lt: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),
+                    lt: sevenDaysAgo,
                 }
             }
         })
-        
-        res.status(200).json({ msg: "ลบข้อมูลที่เกิน 7 วันเรียบร้อยแล้ว" })
+
+        console.log("ลบข้อมูลที่เกิน 7 วันเรียบร้อยแล้ว");
     } catch (error) {
-        console.error('เกิดข้อผิดพลาดในการลบข้อมูล:', error)
-        res.status(500).json({ error: 'เกิดข้อผิดพลาดในการลบข้อมูล' })
+        console.error('เกิดข้อผิดพลาดในการลบข้อมูล:', error);
     }
 }
