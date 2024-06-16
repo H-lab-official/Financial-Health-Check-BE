@@ -44,6 +44,7 @@ export const deleteAllBy7days = async () => {
                 }
             }
         })
+        
         await prisma.user.deleteMany({
             where: {
                 createdAt: {
