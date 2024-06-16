@@ -44,7 +44,7 @@ jobs:
             echo "DATABASE_URL=\"${DATABASE_URL}\"" > .env
             echo "SWAGGER_PASSWORD=${SWAGGER_PASSWORD}" >> .env
             echo "SWAGGER_UUID=${SWAGGER_UUID}" >> .env
-            echo "PORT=${ PORT}" >> .env
+            echo "PORT=${PORT}" >> .env
             npm install
             npm run build
             mv ecosystem.config.js ecosystem.config.cjs
