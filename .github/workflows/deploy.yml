@@ -35,7 +35,7 @@ jobs:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           SWAGGER_PASSWORD: ${{secrets.SWAGGER_PASSWORD}}
           SWAGGER_UUID: ${{secrets.SWAGGER_UUID}}
-          PORT:${{secrets.PORT}}
+          MAIN_PORT: ${{secrets.MAIN_PORT}}
         run: |
           ssh -o StrictHostKeyChecking=no $USERNAME@$HOST << EOF
             export PATH=/root/.nvm/versions/node/v20.12.2/bin:$PATH
@@ -44,7 +44,7 @@ jobs:
             echo "DATABASE_URL=\"${DATABASE_URL}\"" > .env
             echo "SWAGGER_PASSWORD=${SWAGGER_PASSWORD}" >> .env
             echo "SWAGGER_UUID=${SWAGGER_UUID}" >> .env
-            echo "PORT=${PORT}" >> .env
+            echo "MAIN_PORT=${MAIN_PORT}" >> .env
             npm install
             npm run build
             mv ecosystem.config.js ecosystem.config.cjs
