@@ -38,20 +38,20 @@ app.use(
 );
 
 // Configure CORS with allowed origin and credentials
-const allowedOrigins = ['https://financial-health-check.azayagencyjourney.com',"http://localhost:5173","http://192.168.1.37:5173"];
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true,
-  })
-);
+// const allowedOrigins = ['https://financial-health-check.azayagencyjourney.com',"http://localhost:5173","http://192.168.1.37:5173"];
+// app.use(
+//   cors({
+//     origin: function (origin, callback) {
+//       if (!origin || allowedOrigins.includes(origin)) {
+//         callback(null, true);
+//       } else {
+//         callback(new Error('Not allowed by CORS'));
+//       }
+//     },
+//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//     credentials: true,
+//   })
+// );
 
 app.use(express.json());
 
