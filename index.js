@@ -11,6 +11,7 @@ import HealthPlan from './routes/HealthPlanRoutes.js';
 import Education from './routes/EducationPlanRoutes.js';
 import Retirement from './routes/RetirementPlanRoutes.js';
 import Importance from './routes/ImportanceRoutes.js';
+import Addresspaln from './routes/AddressPlanRoutes.js';
 import { deleteAllBy7days } from './controller/deleteAllBy7days.js';
 import helmet from 'helmet';
 import { swaggerOptions } from './swaggerOptions.js';
@@ -38,7 +39,7 @@ app.use(
 );
 
 // Configure CORS with allowed origin and credentials
-const allowedOrigins = ['https://financial-health-check.azayagencyjourney.com',"http://localhost:5173","http://192.168.1.37:5173"];
+const allowedOrigins = ['https://financial-health-check.azayagencyjourney.com', "http://localhost:5173", "http://192.168.1.37:5173"];
 app.use(
   cors({
     origin: function (origin, callback) {
@@ -81,7 +82,7 @@ app.use(HealthPlan);
 app.use(Education);
 app.use(Retirement);
 app.use(Importance);
-
+app.use(Addresspaln)
 cron.schedule('0 0 * * *', deleteAllBy7days);
 
 app.listen(port, () => {
