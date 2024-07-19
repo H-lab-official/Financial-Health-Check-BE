@@ -6,14 +6,14 @@ export const addAddressPlans = async (req, res) => {
   const { plans } = req.body;
 
   if (!Array.isArray(plans)) {
-    return res.status(400).json({ error: 'Plans should be an array of URLs' });
+    return res.status(400).json({ error: 'Plans should be an array of objects' });
   }
 
   try {
     const createdPlans = await Promise.all(
-      plans.map(async (url) => {
-        return await prisma.Plan.create({
-          data: { url },
+      plans.map(async (plan) => {
+        return await prisma.plan.create({
+          data: plan,
         });
       })
     );
@@ -30,12 +30,12 @@ const parsePlanUrl = (url) => {
 
 export const getAllAddressPlans = async (req, res) => {
   try {
-    const plans = await prisma.Plan.findMany();
+    const plans = await prisma.plan.findMany();
     const parsedPlans = plans.map(plan => ({
       ...plan,
       ...parsePlanUrl(plan.url),
     }));
-    res.status(200).json("parsedPlans");
+    res.status(200).json(parsedPlans);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -44,7 +44,7 @@ export const getAllAddressPlans = async (req, res) => {
 export const getAddressPlanById = async (req, res) => {
   const { id } = req.params;
   try {
-    const plan = await prisma.Plan.findUnique({
+    const plan = await prisma.plan.findUnique({
       where: { id },
     });
     if (plan) {
@@ -64,7 +64,7 @@ export const getAddressPlanById = async (req, res) => {
 export const deleteAddressPlan = async (req, res) => {
   const { id } = req.params;
   try {
-    await prisma.Plan.delete({
+    await prisma.plan.delete({
       where: { id },
     });
     res.status(204).end();
