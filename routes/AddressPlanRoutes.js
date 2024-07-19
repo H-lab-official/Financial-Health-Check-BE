@@ -65,11 +65,13 @@ router.get('/addressplan/:id', getAddressPlanById);
  *             type: object
  *             properties:
  *               plans:
- *                 type: object
- *                 example: {
- *                   "plan1": "/view/protectionplan/4206b125-ecd0-4c7e-baa9-9b02c67b6567",
- *                   "plan2": "/view/healthplan/ef4bcbca-591b-47bc-840f-5bd770c68449"
- *                 }
+ *                 type: array
+ *                 items:
+ *                   type: string
+ *                 example: [
+ *                   "/view/protectionplan/4206b125-ecd0-4c7e-baa9-9b02c67b6567",
+ *                   "/view/healthplan/ef4bcbca-591b-47bc-840f-5bd770c68449"
+ *                 ]
  *     responses:
  *       201:
  *         description: The address plans were successfully created
