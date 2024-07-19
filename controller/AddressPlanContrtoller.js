@@ -4,10 +4,10 @@ const prisma = new PrismaClient();
 
 export const addAddressPlans = async (req, res) => {
   const { plans } = req.body;
-
-  if (!Array.isArray(plans)) {
-    return res.status(400).json({ error: 'Plans should be an array' });
-  }
+// console.log(typeof plans);
+//   if (!Array.isArray(plans)) {
+//     return res.status(400).json({ error: 'Plans should be an array' });
+//   }
 
   try {
     const createdPlan = await prisma.plan.create({
