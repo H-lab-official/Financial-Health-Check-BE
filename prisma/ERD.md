@@ -95,11 +95,20 @@ erDiagram
   DateTime createdAt
   DateTime updatedAt
 }
+"Plan" {
+  String id PK
+  String type
+  String url
+  String user_params FK
+  String nickname
+  String age
+}
 "EducationPlan" }o--|| "User" : user
 "ProtectionPlan" }o--|| "User" : user
 "importance" }o--|| "User" : user
 "HealthPlan" }o--|| "User" : user
 "RetirementPlan" }o--|| "User" : user
+"Plan" }o--|| "User" : user
 ```
 
 ### `EducationPlan`
@@ -202,3 +211,13 @@ erDiagram
   - `otherAssets`: 
   - `createdAt`: 
   - `updatedAt`: 
+
+### `Plan`
+
+**Properties**
+  - `id`: 
+  - `type`: 
+  - `url`: 
+  - `user_params`: 
+  - `nickname`: 
+  - `age`: 
