@@ -62,21 +62,13 @@ router.get('/addressplan/:id', getAddressPlanById);
  *       content:
  *         application/json:
  *           schema:
- *             type: array
- *             items:
- *               type: object
- *               properties:
- *                 type:
+ *             type: object
+ *             properties:
+ *               plans:
+ *                 type: array
+ *                 items:
  *                   type: string
- *                 url:
- *                   type: string
- *                 user_params:
- *                   type: string
- *                 nickname:
- *                   type: string
- *                 age:
- *                   type: string
- *               example: [{ "type": "protectionplan", "url": "/view/protectionplan/4206b125-ecd0-4c7e-baa9-9b02c67b6567", "user_params": "12345", "nickname": "John", "age": "30" }]
+ *                 example: ['/view/protectionplan/4206b125-ecd0-4c7e-baa9-9b02c67b6567', '/view/healthplan/ef4bcbca-591b-47bc-840f-5bd770c68449']
  *     responses:
  *       201:
  *         description: The address plans were successfully created
@@ -85,10 +77,8 @@ router.get('/addressplan/:id', getAddressPlanById);
  *             schema:
  *               type: object
  *               properties:
- *                 ids:
- *                   type: array
- *                   items:
- *                     type: string
+ *                 id:
+ *                   type: string
  *       400:
  *         description: Invalid input
  */

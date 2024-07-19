@@ -77,7 +77,7 @@ model User {
   importance     importance[]
   HealthPlan     HealthPlan[]
   RetirementPlan RetirementPlan[]
-  Plan           Plan[]
+
 }
 
 model HealthPlan {
@@ -124,11 +124,7 @@ model RetirementPlan {
 }
 
 model Plan {
-  id          String @id @default(uuid())
-  type        String
-  url         String
-  user_params String
-  nickname    String
-  age         String
-  user        User   @relation(fields: [user_params], references: [user_params])
+  id     String  @id @default(uuid())
+  data   Json[]
+ 
 }

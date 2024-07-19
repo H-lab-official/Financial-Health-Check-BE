@@ -6,36 +6,23 @@ export const addAddressPlans = async (req, res) => {
   const { plans } = req.body;
 
   if (!Array.isArray(plans)) {
-    return res.status(400).json({ error: 'Plans should be an array of objects' });
+    return res.status(400).json({ error: 'Plans should be an array' });
   }
 
   try {
-    const createdPlans = await Promise.all(
-      plans.map(async (plan) => {
-        return await prisma.plan.create({
-          data: plan,
-        });
-      })
-    );
-    res.status(201).json({ ids: createdPlans.map(plan => plan.id) });
+    const createdPlan = await prisma.plan.create({
+      data: { data: plans },
+    });
+    res.status(201).json({ id: createdPlan.id });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
 
-const parsePlanUrl = (url) => {
-  const [,, planType, planId] = url.split('/');
-  return { planType, planId };
-};
-
 export const getAllAddressPlans = async (req, res) => {
   try {
     const plans = await prisma.plan.findMany();
-    const parsedPlans = plans.map(plan => ({
-      ...plan,
-      ...parsePlanUrl(plan.url),
-    }));
-    res.status(200).json(parsedPlans);
+    res.status(200).json(plans);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -48,11 +35,7 @@ export const getAddressPlanById = async (req, res) => {
       where: { id },
     });
     if (plan) {
-      const parsedPlan = {
-        ...plan,
-        ...parsePlanUrl(plan.url),
-      };
-      res.status(200).json(parsedPlan);
+      res.status(200).json(plan);
     } else {
       res.status(404).json({ error: 'Plan not found' });
     }
