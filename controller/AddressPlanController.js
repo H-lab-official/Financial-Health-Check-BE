@@ -6,6 +6,7 @@ export const addAddressPlans = async (req, res) => {
   const { plans } = req.body;
 
   // Log the incoming request for debugging
+  console.log('Received body:', req.body);
   console.log('Received plans:', plans);
   console.log('Type of plans:', typeof plans);
 
