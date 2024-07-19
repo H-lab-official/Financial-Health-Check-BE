@@ -4,6 +4,7 @@ import cron from 'node-cron';
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 import basicAuth from 'express-basic-auth';
+import bodyParser from 'body-parser';
 import 'dotenv/config';
 import protection from './routes/ProtectionPlanRoutes.js';
 import userRoutes from "./routes/UserRoutes.js";
@@ -55,7 +56,7 @@ app.use(
 );
 
 app.use(express.json());
-
+app.use(bodyParser.json());
 const swaggerSpec = swaggerJSDoc(swaggerOptions);
 
 const authMiddleware = basicAuth({
