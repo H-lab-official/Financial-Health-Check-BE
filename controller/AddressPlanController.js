@@ -3,22 +3,22 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 export const addAddressPlans = async (req, res) => {
-  const plans = req.body;
+  const { plans } = req.body;
 
   // Log the incoming request for debugging
-  console.log('Received body:', plans);
+  console.log('Received body:', req.body);
   console.log('Type of plans:', typeof plans);
 
-  // // Ensure plans is an array
-  // if (!Array.isArray(plans)) {
-  //   return res.status(400).json({ error: 'Plans should be an array' });
-  // }
+  // Ensure plans is an array
+  if (!Array.isArray(plans)) {
+    return res.status(400).json({ error: 'Plans should be an array' });
+  }
 
   try {
     const createdPlan = await prisma.plan.create({
       data: { data: plans },
     });
-    res.status(201).json(createdPlan);
+    res.status(201).json({ id: createdPlan.id, data: createdPlan.data });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -40,7 +40,7 @@ export const getAddressPlanById = async (req, res) => {
       where: { id },
     });
     if (plan) {
-      res.status(200).json(plan);
+      res.status(200).json({ id: plan.id, data: plan.data });
     } else {
       res.status(404).json({ error: 'Plan not found' });
     }
