@@ -9,9 +9,9 @@ export const addAddressPlans = async (req, res) => {
   console.log('Received plans:', plans);
   console.log('Type of plans:', typeof plans);
 
-  // Ensure plans is an array
-  if (!Array.isArray(plans)) {
-    return res.status(400).json({ error: 'Plans should be an array' });
+  // Ensure plans is an object
+  if (typeof plans !== 'object' || Array.isArray(plans)) {
+    return res.status(400).json({ error: 'Plans should be an object' });
   }
 
   try {
