@@ -3,11 +3,10 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 export const addAddressPlans = async (req, res) => {
-  const { plans } = req.body;
+  const plans = req.body;
 
   // Log the incoming request for debugging
-  console.log('Received body:', req.body);
-  console.log('Received plans:', plans);
+  console.log('Received body:', plans);
   console.log('Type of plans:', typeof plans);
 
   // Ensure plans is an array
