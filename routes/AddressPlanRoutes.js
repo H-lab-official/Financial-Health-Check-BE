@@ -4,7 +4,7 @@ import {
   getAllAddressPlans,
   getAddressPlanById,
   deleteAddressPlan,
-} from '../controller/AddressPlanContrtoller.js';
+} from '../controller/AddressPlanController.js';
 
 const router = express.Router();
 
