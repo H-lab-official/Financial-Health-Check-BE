@@ -128,3 +128,9 @@ model Plan {
   data   Json[]
  
 }
+model SelectionLog {
+  id            String   @id @unique @default(uuid())
+  user_params   String
+  selectedPlans Json
+  timestamp     DateTime @default(now())
+}

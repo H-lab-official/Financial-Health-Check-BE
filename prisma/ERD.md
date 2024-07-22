@@ -99,6 +99,12 @@ erDiagram
   String id PK
   Json data
 }
+"SelectionLog" {
+  String id PK
+  String user_params
+  Json selectedPlans
+  DateTime timestamp
+}
 "EducationPlan" }o--|| "User" : user
 "ProtectionPlan" }o--|| "User" : user
 "importance" }o--|| "User" : user
@@ -212,3 +218,11 @@ erDiagram
 **Properties**
   - `id`: 
   - `data`: 
+
+### `SelectionLog`
+
+**Properties**
+  - `id`: 
+  - `user_params`: 
+  - `selectedPlans`: 
+  - `timestamp`: 
