@@ -18,3 +18,12 @@ export const addLogs = async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 };
+export const viewAllLogs = async (req, res) => {
+    try {
+      const logs = await prisma.selectionLog.findMany();
+      res.status(200).json(logs);
+    } catch (error) {
+      console.error('Error retrieving logs from database:', error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  };

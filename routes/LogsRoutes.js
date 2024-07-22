@@ -1,5 +1,5 @@
 import express from 'express';
-import { addLogs } from '../controller/LogsController.js';
+import { addLogs, viewAllLogs } from '../controller/LogsController.js';
 
 const router = express.Router();
 
@@ -38,5 +38,37 @@ const router = express.Router();
  *         description: Invalid input
  */
 router.post('/logs', addLogs);
+
+/**
+ * @swagger
+ * /logs:
+ *   get:
+ *     summary: View all selection logs
+ *     tags: [Logs]
+ *     responses:
+ *       200:
+ *         description: List of all selection logs
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   id:
+ *                     type: string
+ *                   user_params:
+ *                     type: string
+ *                   selectedPlans:
+ *                     type: array
+ *                     items:
+ *                       type: string
+ *                   timestamp:
+ *                     type: string
+ *                     format: date-time
+ *       500:
+ *         description: Internal server error
+ */
+router.get('/logs', viewAllLogs);
 
 export default router;
