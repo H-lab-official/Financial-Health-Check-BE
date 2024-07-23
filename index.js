@@ -14,6 +14,7 @@ import Retirement from './routes/RetirementPlanRoutes.js';
 import Importance from './routes/ImportanceRoutes.js';
 import Addresspaln from './routes/AddressPlanRoutes.js';
 import Logs from './routes/LogsRoutes.js'
+import PlanLogs from './routes/PlanLogRoutes.js'
 import { deleteAllBy7days } from './controller/deleteAllBy7days.js';
 import helmet from 'helmet';
 import { swaggerOptions } from './swaggerOptions.js';
@@ -86,6 +87,7 @@ app.use(Retirement);
 app.use(Importance);
 app.use(Addresspaln)
 app.use(Logs)
+app.use(PlanLogs)
 cron.schedule('0 0 * * *', deleteAllBy7days);
 
 app.listen(port, () => {

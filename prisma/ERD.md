@@ -105,6 +105,13 @@ erDiagram
   Json selectedPlans
   DateTime timestamp
 }
+"PlanLog" {
+  String id PK
+  String user_params
+  Int status
+  String planType
+  DateTime timestamp
+}
 "EducationPlan" }o--|| "User" : user
 "ProtectionPlan" }o--|| "User" : user
 "importance" }o--|| "User" : user
@@ -225,4 +232,13 @@ erDiagram
   - `id`: 
   - `user_params`: 
   - `selectedPlans`: 
+  - `timestamp`: 
+
+### `PlanLog`
+
+**Properties**
+  - `id`: 
+  - `user_params`: 
+  - `status`: 
+  - `planType`: 
   - `timestamp`: 

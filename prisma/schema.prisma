@@ -134,3 +134,10 @@ model SelectionLog {
   selectedPlans Json
   timestamp     DateTime @default(now())
 }
+model PlanLog {
+  id            String   @id @default(uuid())
+  user_params   String
+  status        Int
+  planType      String
+  timestamp     DateTime @default(now())
+}
