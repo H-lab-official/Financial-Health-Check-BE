@@ -11,6 +11,7 @@ erDiagram
   String user_params FK
   String nickname
   String age
+  String gender
   String levelOfeducation
   String typeOfeducation
   String yearsOfeducation
@@ -26,6 +27,7 @@ erDiagram
   String user_params FK
   String nickname
   String age
+  String gender
   String initialMonthlyExpense
   String numberOfYears
   String adjustedYearlyExpenses
@@ -62,6 +64,7 @@ erDiagram
   String user_params FK
   String nickname
   String age
+  String gender
   String hospitals
   String dailyCompensationFromWelfare
   String treatingSeriousIllness
@@ -80,6 +83,7 @@ erDiagram
   String user_params FK
   String nickname
   String age
+  String gender
   String livingCosts
   String houseCosts
   String internetCosts
@@ -126,6 +130,7 @@ erDiagram
   - `user_params`: 
   - `nickname`: 
   - `age`: 
+  - `gender`: 
   - `levelOfeducation`: 
   - `typeOfeducation`: 
   - `yearsOfeducation`: 
@@ -143,6 +148,7 @@ erDiagram
   - `user_params`: 
   - `nickname`: 
   - `age`: 
+  - `gender`: 
   - `initialMonthlyExpense`: 
   - `numberOfYears`: 
   - `adjustedYearlyExpenses`: 
@@ -185,6 +191,7 @@ erDiagram
   - `user_params`: 
   - `nickname`: 
   - `age`: 
+  - `gender`: 
   - `hospitals`: 
   - `dailyCompensationFromWelfare`: 
   - `treatingSeriousIllness`: 
@@ -205,6 +212,7 @@ erDiagram
   - `user_params`: 
   - `nickname`: 
   - `age`: 
+  - `gender`: 
   - `livingCosts`: 
   - `houseCosts`: 
   - `internetCosts`: 

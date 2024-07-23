@@ -30,7 +30,7 @@ export const getHealthPlanById = async (req, res) => {
 export const createHealthPlan = async (req, res) => {
     const { data, nameData } = req.body;
     const { hospitals, dailyCompensationFromWelfare, treatingSeriousIllness, emergencyCosts, annualTreatment, roomFeeFromCompany, dailyCompensationFromCompany, treatingSeriousIllnessFromCompany, emergencyCostsFromCompany, annualTreatmentFromCompany } = data
-    const { nickname, age, user_params } = nameData;
+    const { nickname, age, user_params,gender } = nameData;
     try {
         let user = await prisma.user.findUnique({ where: { user_params } });
         if (!user) {
@@ -46,7 +46,7 @@ export const createHealthPlan = async (req, res) => {
             data: {
                 user: { connect: { user_params } },
                 nickname,
-                age,
+                age,gender,
                 hospitals,
                 dailyCompensationFromWelfare,
                 treatingSeriousIllness,
@@ -69,7 +69,7 @@ export const updateHealthPlan = async (req, res) => {
     const { id } = req.params
     const { data, nameData } = req.body;
     const { hospitals, dailyCompensationFromWelfare, treatingSeriousIllness, emergencyCosts, annualTreatment, roomFeeFromCompany, dailyCompensationFromCompany, treatingSeriousIllnessFromCompany, emergencyCostsFromCompany, annualTreatmentFromCompany } = data
-    const { nickname, age } = nameData;
+    const { nickname, age ,gender} = nameData;
     try {
         // Find the existing protection plan
         const existingPlan = await prisma.healthPlan.findUnique({
@@ -84,7 +84,7 @@ export const updateHealthPlan = async (req, res) => {
             where: { id },
             data: {
                 nickname,
-                age,
+                age,gender,
                 hospitals,
                 dailyCompensationFromWelfare,
                 treatingSeriousIllness,

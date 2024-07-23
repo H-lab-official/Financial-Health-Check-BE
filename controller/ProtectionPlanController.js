@@ -34,7 +34,7 @@ export const getProtectionPlanById = async (req, res) => {
 export const createProtectionPlan = async (req, res) => {
   const { data, nameData } = req.body;
   const { initialMonthlyExpense, numberOfYears, adjustedYearlyExpenses, inflationRate, homePayments, carPayments, otherDebts, bankDeposit, lifeInsuranceFund, otherAssets } = data;
-  const { nickname, age, user_params } = nameData;
+  const { nickname, age, user_params,gender } = nameData;
  
   try {
     let user = await prisma.user.findUnique({ where: { user_params } });
@@ -52,6 +52,7 @@ export const createProtectionPlan = async (req, res) => {
         user: { connect: { user_params } },
         nickname,
         age,
+        gender,
         initialMonthlyExpense,
         numberOfYears,
         adjustedYearlyExpenses,
@@ -76,7 +77,7 @@ export const updateProtectionPlan = async (req, res) => {
   const { id } = req.params
   const { data, nameData } = req.body;
   const { initialMonthlyExpense, numberOfYears, adjustedYearlyExpenses, inflationRate, homePayments, carPayments, otherDebts, bankDeposit, lifeInsuranceFund } = data
-  const { nickname, age } = nameData;
+  const { nickname, age ,gender} = nameData;
   try {
     // Find the existing protection plan
     const existingPlan = await prisma.protectionPlan.findUnique({
@@ -93,7 +94,7 @@ export const updateProtectionPlan = async (req, res) => {
       where: { id },
       data: {
         nickname,
-        age,
+        age,gender,
         initialMonthlyExpense,
         numberOfYears,
         adjustedYearlyExpenses,

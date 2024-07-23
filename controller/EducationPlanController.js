@@ -33,7 +33,7 @@ export const createEducationPlan = async (req, res) => {
         deposit         ,
         insuranceFund  ,
         otherAssets      } = data
-        const { nickname, age, user_params } = nameData;
+        const { nickname, age, user_params,gender } = nameData;
     try {
         let user = await prisma.user.findUnique({ where: { user_params } });
         if (!user) {
@@ -48,7 +48,7 @@ export const createEducationPlan = async (req, res) => {
             data: {
                 user: { connect: { user_params } },
                 nickname,
-                age,
+                age,gender,
                 levelOfeducation,
                 typeOfeducation ,
                 yearsOfeducation,
@@ -68,7 +68,7 @@ export const updateEducationPlan = async (req, res) => {
     const { id } = req.params
     const { data, nameData } = req.body;
     const { levelOfeducation,typeOfeducation,yearsOfeducation,inflationRate,deposit,insuranceFund,otherAssets} = data
-    const { nickname, age } = nameData;
+    const { nickname, age,gender } = nameData;
     try {
         // Find the existing protection plan
         const existingPlan = await prisma.educationPlan.findUnique({
@@ -81,7 +81,7 @@ export const updateEducationPlan = async (req, res) => {
       
         const updatedPlan = await prisma.educationPlan.update({
             where: { id },
-            data: {nickname,
+            data: {nickname,gender,
                 age,levelOfeducation,typeOfeducation ,yearsOfeducation,inflationRate,deposit,insuranceFund,otherAssets},
         })
 
