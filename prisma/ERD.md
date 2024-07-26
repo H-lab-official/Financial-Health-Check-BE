@@ -17,6 +17,7 @@ erDiagram
   String typeOfeducation
   String typeOfeducation2
   String yearsOfeducation
+  String expensesDuringStudy
   String inflationRate
   String deposit
   String insuranceFund
@@ -139,6 +140,7 @@ erDiagram
   - `typeOfeducation`: 
   - `typeOfeducation2`: 
   - `yearsOfeducation`: 
+  - `expensesDuringStudy`: 
   - `inflationRate`: 
   - `deposit`: 
   - `insuranceFund`: 

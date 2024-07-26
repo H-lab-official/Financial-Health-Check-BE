@@ -26,7 +26,7 @@ export const getEducationPlanById = async (req, res) => {
 }
 export const createEducationPlan = async (req, res) => {
     const { data, nameData } = req.body;
-    const { levelOfeducation, levelOfeducation2,
+    const { levelOfeducation, levelOfeducation2,expensesDuringStudy,
         typeOfeducation, typeOfeducation2,
         yearsOfeducation,
         inflationRate,
@@ -49,7 +49,7 @@ export const createEducationPlan = async (req, res) => {
                 user: { connect: { user_params } },
                 nickname,
                 age, gender,
-                levelOfeducation, levelOfeducation2,
+                levelOfeducation, levelOfeducation2,expensesDuringStudy,
                 typeOfeducation, typeOfeducation2,
                 yearsOfeducation,
                 inflationRate,
@@ -67,7 +67,7 @@ export const createEducationPlan = async (req, res) => {
 export const updateEducationPlan = async (req, res) => {
     const { id } = req.params
     const { data, nameData } = req.body;
-    const { levelOfeducation, levelOfeducation2,
+    const { levelOfeducation, levelOfeducation2,expensesDuringStudy,
         typeOfeducation, typeOfeducation2,
         yearsOfeducation,
         inflationRate,
@@ -89,7 +89,7 @@ export const updateEducationPlan = async (req, res) => {
             where: { id },
             data: {
                 nickname, gender,
-                age, levelOfeducation, levelOfeducation2,
+                age, levelOfeducation, levelOfeducation2,expensesDuringStudy,
                 typeOfeducation, typeOfeducation2,
                 yearsOfeducation,
                 inflationRate,
