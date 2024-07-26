@@ -95,6 +95,7 @@ model HealthPlan {
   age                               String
   gender                            String
   hospitals                         String
+  hospitals2                         String
   dailyCompensationFromWelfare      String
   treatingSeriousIllness            String
   emergencyCosts                    String

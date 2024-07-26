@@ -70,6 +70,7 @@ erDiagram
   String age
   String gender
   String hospitals
+  String hospitals2
   String dailyCompensationFromWelfare
   String treatingSeriousIllness
   String emergencyCosts
@@ -201,6 +202,7 @@ erDiagram
   - `age`: 
   - `gender`: 
   - `hospitals`: 
+  - `hospitals2`: 
   - `dailyCompensationFromWelfare`: 
   - `treatingSeriousIllness`: 
   - `emergencyCosts`: 
