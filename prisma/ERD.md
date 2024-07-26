@@ -13,12 +13,15 @@ erDiagram
   String age
   String gender
   String levelOfeducation
+  String levelOfeducation2
   String typeOfeducation
+  String typeOfeducation2
   String yearsOfeducation
   String inflationRate
   String deposit
   String insuranceFund
   String otherAssets
+  String child
   DateTime createdAt
   DateTime updatedAt
 }
@@ -132,12 +135,15 @@ erDiagram
   - `age`: 
   - `gender`: 
   - `levelOfeducation`: 
+  - `levelOfeducation2`: 
   - `typeOfeducation`: 
+  - `typeOfeducation2`: 
   - `yearsOfeducation`: 
   - `inflationRate`: 
   - `deposit`: 
   - `insuranceFund`: 
   - `otherAssets`: 
+  - `child`: 
   - `createdAt`: 
   - `updatedAt`: 
 

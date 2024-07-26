@@ -24,12 +24,15 @@ model EducationPlan {
   age              String
   gender           String
   levelOfeducation String
+  levelOfeducation2 String
   typeOfeducation  String
+  typeOfeducation2  String
   yearsOfeducation String
   inflationRate    String
   deposit          String
   insuranceFund    String
   otherAssets      String
+  child            String
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
 }
