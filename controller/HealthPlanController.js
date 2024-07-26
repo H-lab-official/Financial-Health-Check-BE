@@ -29,7 +29,7 @@ export const getHealthPlanById = async (req, res) => {
 };
 export const createHealthPlan = async (req, res) => {
     const { data, nameData } = req.body;
-    const { hospitals, dailyCompensationFromWelfare, treatingSeriousIllness, emergencyCosts, annualTreatment, roomFeeFromCompany, dailyCompensationFromCompany, treatingSeriousIllnessFromCompany, emergencyCostsFromCompany, annualTreatmentFromCompany } = data
+    const { hospitals, hospitals2,dailyCompensationFromWelfare, treatingSeriousIllness, emergencyCosts, annualTreatment, roomFeeFromCompany, dailyCompensationFromCompany, treatingSeriousIllnessFromCompany, emergencyCostsFromCompany, annualTreatmentFromCompany } = data
     const { nickname, age, user_params,gender } = nameData;
     try {
         let user = await prisma.user.findUnique({ where: { user_params } });
@@ -47,7 +47,7 @@ export const createHealthPlan = async (req, res) => {
                 user: { connect: { user_params } },
                 nickname,
                 age,gender,
-                hospitals,
+                hospitals,hospitals2,
                 dailyCompensationFromWelfare,
                 treatingSeriousIllness,
                 emergencyCosts,
@@ -68,7 +68,7 @@ export const createHealthPlan = async (req, res) => {
 export const updateHealthPlan = async (req, res) => {
     const { id } = req.params
     const { data, nameData } = req.body;
-    const { hospitals, dailyCompensationFromWelfare, treatingSeriousIllness, emergencyCosts, annualTreatment, roomFeeFromCompany, dailyCompensationFromCompany, treatingSeriousIllnessFromCompany, emergencyCostsFromCompany, annualTreatmentFromCompany } = data
+    const { hospitals,hospitals2, dailyCompensationFromWelfare, treatingSeriousIllness, emergencyCosts, annualTreatment, roomFeeFromCompany, dailyCompensationFromCompany, treatingSeriousIllnessFromCompany, emergencyCostsFromCompany, annualTreatmentFromCompany } = data
     const { nickname, age ,gender} = nameData;
     try {
         // Find the existing protection plan
@@ -85,7 +85,7 @@ export const updateHealthPlan = async (req, res) => {
             data: {
                 nickname,
                 age,gender,
-                hospitals,
+                hospitals,hospitals2,
                 dailyCompensationFromWelfare,
                 treatingSeriousIllness,
                 emergencyCosts,
