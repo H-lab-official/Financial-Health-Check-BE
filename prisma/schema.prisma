@@ -65,7 +65,7 @@ model importance {
   user                User     @relation(fields: [user_params], references: [user_params])
   nickname            String
   age                 String
-
+  gender              String
   protectionPlanOrder String
   healthPlanOrder     String
   retirementPlanOrder String

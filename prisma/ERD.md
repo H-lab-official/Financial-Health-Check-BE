@@ -50,6 +50,7 @@ erDiagram
   String user_params FK
   String nickname
   String age
+  String gender
   String protectionPlanOrder
   String healthPlanOrder
   String retirementPlanOrder
@@ -178,6 +179,7 @@ erDiagram
   - `user_params`: 
   - `nickname`: 
   - `age`: 
+  - `gender`: 
   - `protectionPlanOrder`: 
   - `healthPlanOrder`: 
   - `retirementPlanOrder`: 
