@@ -50,7 +50,13 @@ export const createImportance = async (req, res) => {
                 healthPlanOrder: healthPlanOrder.toString(),
                 retirementPlanOrder: retirementPlanOrder.toString(),
                 educationPlanOrder: educationPlanOrder.toString(),
-                emergencyAccidentTreatmentCosts, missingTotal, protectiondata, roomRates, severeMedicalExpenses, totalMissing, treatmentBudget
+                emergencyAccidentTreatmentCosts: emergencyAccidentTreatmentCosts || '', // Default to empty string if undefined
+                missingTotal: missingTotal || '', // Default to empty string if undefined
+                protectiondata: protectiondata || '', // Default to empty string if undefined
+                roomRates: roomRates || '', // Default to empty string if undefined
+                severeMedicalExpenses: severeMedicalExpenses || '', // Default to empty string if undefined
+                totalMissing: totalMissing || '', // Default to empty string if undefined
+                treatmentBudget: treatmentBudget || '',
             },
         })
 
