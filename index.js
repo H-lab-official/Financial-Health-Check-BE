@@ -42,7 +42,7 @@ app.use(
 );
 
 // Configure CORS with allowed origin and credentials
-const allowedOrigins = ['https://financial-health-check.azayagencyjourney.com', "http://localhost:5173", "http://192.168.1.37:5173"];
+const allowedOrigins = ['https://financial-health-check.azayagencyjourney.com', "http://localhost:5173", "http://192.168.1.33:5173"];
 app.use(
   cors({
     origin: function (origin, callback) {
