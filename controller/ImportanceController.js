@@ -29,8 +29,8 @@ export const getImportanceById = async (req, res) => {
 }
 export const createImportance = async (req, res) => {
     const { data, nameData } = req.body;
-    const { protectionPlanOrder, healthPlanOrder, retirementPlanOrder, educationPlanOrder } = data
-    const { nickname, age, user_params,gender  } = nameData;
+    const { protectionPlanOrder, healthPlanOrder, retirementPlanOrder, educationPlanOrder, emergencyAccidentTreatmentCosts, missingTotal, protectiondata, roomRates, severeMedicalExpenses, totalMissing, treatmentBudget } = data
+    const { nickname, age, user_params, gender } = nameData;
     try {
         let user = await prisma.user.findUnique({ where: { user_params } });
         if (!user) {
@@ -45,11 +45,12 @@ export const createImportance = async (req, res) => {
             data: {
                 user: { connect: { user_params } },
                 nickname,
-                age,gender ,
+                age, gender,
                 protectionPlanOrder: protectionPlanOrder.toString(),
                 healthPlanOrder: healthPlanOrder.toString(),
                 retirementPlanOrder: retirementPlanOrder.toString(),
-                educationPlanOrder: educationPlanOrder.toString()
+                educationPlanOrder: educationPlanOrder.toString(),
+                emergencyAccidentTreatmentCosts, missingTotal, protectiondata, roomRates, severeMedicalExpenses, totalMissing, treatmentBudget
             },
         })
 
@@ -61,8 +62,8 @@ export const createImportance = async (req, res) => {
 export const updateImportance = async (req, res) => {
     const { id } = req.params
     const { data, nameData } = req.body;
-    const { protectionPlanOrder, healthPlanOrder, retirementPlanOrder, educationPlanOrder } = data
-    const { nickname, age,gender  } = nameData;
+    const { protectionPlanOrder, healthPlanOrder, retirementPlanOrder, educationPlanOrder, emergencyAccidentTreatmentCosts, missingTotal, protectiondata, roomRates, severeMedicalExpenses, totalMissing, treatmentBudget } = data
+    const { nickname, age, gender } = nameData;
     try {
         // Find the existing protection plan
         const existingPlan = await prisma.importance.findUnique({
@@ -77,10 +78,10 @@ export const updateImportance = async (req, res) => {
             where: { id },
             data: {
                 nickname,
-                age,gender , protectionPlanOrder: protectionPlanOrder.toString(),
+                age, gender, protectionPlanOrder: protectionPlanOrder.toString(),
                 healthPlanOrder: healthPlanOrder.toString(),
                 retirementPlanOrder: retirementPlanOrder.toString(),
-                educationPlanOrder: educationPlanOrder.toString()
+                educationPlanOrder: educationPlanOrder.toString(), emergencyAccidentTreatmentCosts, missingTotal, protectiondata, roomRates, severeMedicalExpenses, totalMissing, treatmentBudget
             },
         })
 

@@ -17,25 +17,25 @@ generator markdown {
 }
 
 model EducationPlan {
-  id               String   @id @unique @default(uuid())
-  user_params      String
-  user             User     @relation(fields: [user_params], references: [user_params])
-  nickname         String
-  age              String
-  gender           String
-  levelOfeducation String
-  levelOfeducation2 String
-  typeOfeducation  String
-  typeOfeducation2  String
-  yearsOfeducation String
+  id                  String   @id @unique @default(uuid())
+  user_params         String
+  user                User     @relation(fields: [user_params], references: [user_params])
+  nickname            String
+  age                 String
+  gender              String
+  levelOfeducation    String
+  levelOfeducation2   String
+  typeOfeducation     String
+  typeOfeducation2    String
+  yearsOfeducation    String
   expensesDuringStudy String
-  inflationRate    String
-  deposit          String
-  insuranceFund    String
-  otherAssets      String
-  child            String
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
+  inflationRate       String
+  deposit             String
+  insuranceFund       String
+  otherAssets         String
+  child               String
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
 }
 
 model ProtectionPlan {
@@ -60,18 +60,25 @@ model ProtectionPlan {
 }
 
 model importance {
-  id                  String   @id @unique @default(uuid())
-  user_params         String
-  user                User     @relation(fields: [user_params], references: [user_params])
-  nickname            String
-  age                 String
-  gender              String
-  protectionPlanOrder String
-  healthPlanOrder     String
-  retirementPlanOrder String
-  educationPlanOrder  String
-  createdAt           DateTime @default(now())
-  updatedAt           DateTime @updatedAt
+  id                              String   @id @unique @default(uuid())
+  user_params                     String
+  user                            User     @relation(fields: [user_params], references: [user_params])
+  nickname                        String
+  age                             String
+  gender                          String
+  protectionPlanOrder             String
+  healthPlanOrder                 String
+  retirementPlanOrder             String
+  educationPlanOrder              String
+  emergencyAccidentTreatmentCosts String
+  missingTotal                    String
+  protectiondata                  String
+  roomRates                       String
+  severeMedicalExpenses           String
+  totalMissing                    String
+  treatmentBudget                 String
+  createdAt                       DateTime @default(now())
+  updatedAt                       DateTime @updatedAt
 }
 
 model User {
@@ -84,7 +91,6 @@ model User {
   importance     importance[]
   HealthPlan     HealthPlan[]
   RetirementPlan RetirementPlan[]
-
 }
 
 model HealthPlan {
@@ -95,7 +101,7 @@ model HealthPlan {
   age                               String
   gender                            String
   hospitals                         String
-  hospitals2                         String
+  hospitals2                        String
   dailyCompensationFromWelfare      String
   treatingSeriousIllness            String
   emergencyCosts                    String
@@ -134,20 +140,21 @@ model RetirementPlan {
 }
 
 model Plan {
-  id     String  @id @default(uuid())
-  data   Json[]
- 
+  id   String @id @default(uuid())
+  data Json[]
 }
+
 model SelectionLog {
   id            String   @id @unique @default(uuid())
   user_params   String
   selectedPlans Json
   timestamp     DateTime @default(now())
 }
+
 model PlanLog {
-  id            String   @id @default(uuid())
-  user_params   String
-  status        Int
-  planType      String
-  timestamp     DateTime @default(now())
+  id          String   @id @default(uuid())
+  user_params String
+  status      Int
+  planType    String
+  timestamp   DateTime @default(now())
 }

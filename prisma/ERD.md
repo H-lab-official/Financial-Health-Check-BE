@@ -55,6 +55,13 @@ erDiagram
   String healthPlanOrder
   String retirementPlanOrder
   String educationPlanOrder
+  String emergencyAccidentTreatmentCosts
+  String missingTotal
+  String protectiondata
+  String roomRates
+  String severeMedicalExpenses
+  String totalMissing
+  String treatmentBudget
   DateTime createdAt
   DateTime updatedAt
 }
@@ -184,6 +191,13 @@ erDiagram
   - `healthPlanOrder`: 
   - `retirementPlanOrder`: 
   - `educationPlanOrder`: 
+  - `emergencyAccidentTreatmentCosts`: 
+  - `missingTotal`: 
+  - `protectiondata`: 
+  - `roomRates`: 
+  - `severeMedicalExpenses`: 
+  - `totalMissing`: 
+  - `treatmentBudget`: 
   - `createdAt`: 
   - `updatedAt`: 
 
