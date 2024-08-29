@@ -33,7 +33,7 @@ module.exports = {
       name: 'financial-health-check-be',
       script: 'index.js',
       interpreter: 'node',
-      instances: 'max', 
+      instances: 2, 
       exec_mode: 'cluster', 
       watch: process.env.NODE_ENV === 'development' ? '.' : false,
       env: {
