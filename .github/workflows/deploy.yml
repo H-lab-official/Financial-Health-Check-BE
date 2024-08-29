@@ -108,13 +108,13 @@ jobs:
             npm install
             npm run build
 
-            # ลบไฟล์ ecosystem.config.js และ ecosystem.config.cjs เก่า หากมี
-            if [ -f ecosystem.config.js ]; then
-              rm -f ecosystem.config.js
-            fi
-            if [ -f ecosystem.config.cjs ]; then
-              rm -f ecosystem.config.cjs
-            fi
+            # # ลบไฟล์ ecosystem.config.js และ ecosystem.config.cjs เก่า หากมี
+            # if [ -f ecosystem.config.js ]; then
+            #   rm -f ecosystem.config.js
+            # fi
+            # if [ -f ecosystem.config.cjs ]; then
+            #   rm -f ecosystem.config.cjs
+            # fi
 
             # ย้ายไฟล์ ecosystem.config.js ใหม่เป็น ecosystem.config.cjs หากมี
             if [ -f ecosystem.config.js ]; then

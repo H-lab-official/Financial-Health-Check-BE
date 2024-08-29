@@ -46,8 +46,8 @@ module.exports = {
       error_file: "./logs/pm2_errors.log",
       out_file: "./logs/pm2_out.log",
       merge_logs: true,
-      max_restarts: 10, // จำกัดจำนวนการรีสตาร์ทในกรณีที่เกิดข้อผิดพลาด
-      restart_delay: 5000 // เวลาที่รอหลังจากเกิดข้อผิดพลาดก่อนทำการรีสตาร์ท
+      // max_restarts: 10, // จำกัดจำนวนการรีสตาร์ทในกรณีที่เกิดข้อผิดพลาด
+      // restart_delay: 5000 // เวลาที่รอหลังจากเกิดข้อผิดพลาดก่อนทำการรีสตาร์ท
     }
   ],
 
