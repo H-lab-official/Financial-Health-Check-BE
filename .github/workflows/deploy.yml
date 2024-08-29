@@ -91,7 +91,7 @@ jobs:
           HOST: ${{ secrets.SERVER_DOMAIN }}
           USERNAME: ${{ secrets.SERVER_USERNAME }}
           TARGET_DIR: /var/www/Financial-Health-Check-BE
-          APP_NAME: financial-health-check-be
+          APP_NAME: Financial-Health-Check-BE
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           SWAGGER_PASSWORD: ${{secrets.SWAGGER_PASSWORD}}
           SWAGGER_UUID: ${{secrets.SWAGGER_UUID}}
@@ -107,10 +107,22 @@ jobs:
             echo "MAIN_PORT=${MAIN_PORT}" >> .env
             npm install
             npm run build
-            # ลบไฟล์ ecosystem.config.js และ ecosystem.config.cjs เก่า
-            rm -f ecosystem.config.js ecosystem.config.cjs
-            # ย้ายไฟล์ ecosystem.config.js ใหม่เป็น ecosystem.config.cjs
-            mv ecosystem.config.js ecosystem.config.cjs
+
+            # ลบไฟล์ ecosystem.config.js และ ecosystem.config.cjs เก่า หากมี
+            if [ -f ecosystem.config.js ]; then
+              rm -f ecosystem.config.js
+            fi
+            if [ -f ecosystem.config.cjs ]; then
+              rm -f ecosystem.config.cjs
+            fi
+
+            # ย้ายไฟล์ ecosystem.config.js ใหม่เป็น ecosystem.config.cjs หากมี
+            if [ -f ecosystem.config.js ]; then
+              mv ecosystem.config.js ecosystem.config.cjs
+            else
+              echo "Warning: ecosystem.config.js not found."
+            fi
+
             npx prisma generate
             npx prisma migrate deploy
             if pm2 list | grep -q $APP_NAME; then
