@@ -59,7 +59,6 @@
 #             fi
 #             pm2 save
 #           EOF
-
 name: Deploy Financial-Health-Check-BE App
 
 on:
@@ -110,8 +109,8 @@ jobs:
             npm run build
             # ลบไฟล์ ecosystem.config.js และ ecosystem.config.cjs เก่า
             rm -f ecosystem.config.js ecosystem.config.cjs
-            # นำไฟล์ ecosystem.config.js ใหม่ที่ pull จาก repository ไปไว้ที่เหมาะสม
-            cp ecosystem.config.js ecosystem.config.cjs
+            # ย้ายไฟล์ ecosystem.config.js ใหม่เป็น ecosystem.config.cjs
+            mv ecosystem.config.js ecosystem.config.cjs
             npx prisma generate
             npx prisma migrate deploy
             if pm2 list | grep -q $APP_NAME; then
