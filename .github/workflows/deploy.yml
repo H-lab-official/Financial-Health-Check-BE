@@ -91,7 +91,7 @@ jobs:
           HOST: ${{ secrets.SERVER_DOMAIN }}
           USERNAME: ${{ secrets.SERVER_USERNAME }}
           TARGET_DIR: /var/www/Financial-Health-Check-BE
-          APP_NAME: Financial-Health-Check-BE
+          APP_NAME: financial-health-check-be
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           SWAGGER_PASSWORD: ${{secrets.SWAGGER_PASSWORD}}
           SWAGGER_UUID: ${{secrets.SWAGGER_UUID}}
